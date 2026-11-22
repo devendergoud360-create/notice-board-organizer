@@ -12,7 +12,7 @@ import persistence.bootstrap  # noqa: F401
 from application import App
 from domain import Notice, NoticeService, VALID_CATEGORIES
 from persistence import available_backends, get_backend
-from reporting import export_csv, export_markdown, export_text
+from presentation import export_csv, export_markdown, export_text
 from risk import compute_risk, clamp01, fnv1a_32
 
 from seed_data import generate as generate_sample

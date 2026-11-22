@@ -14,8 +14,8 @@ from typing import List
 
 from application import App, bus, registry
 from domain import VALID_CATEGORIES
-from reporting import export_csv, export_markdown, export_text
-from validation import ask_category, ask_date, ask_positive_int, ask_text, ask_yes_no
+from presentation import export_csv, export_markdown, export_text
+from presentation import ask_category, ask_date, ask_positive_int, ask_text, ask_yes_no
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
@@ -67,7 +67,7 @@ def action_add(app: App) -> None:
     category = ask_category("Category")
     posted = ask_date("Date posted", "date posted", date.today())
     expiry = ask_date("Expiry date", "expiry date", posted + timedelta(days=7))
-    from validation import validate_date_range
+    from domain.validation import validate_date_range
     try:
         validate_date_range(posted, expiry)
     except Exception as exc:
@@ -84,7 +84,7 @@ def action_add(app: App) -> None:
 
 
 def action_view(app: App) -> None:
-    from reporting import format_table
+    from presentation import format_table
     from domain import Notice
     items = [Notice.from_dict(d) for d in registry.execute("list", app)]
     print(C.BOLD + "\n  ALL NOTICES" + C.RESET)
@@ -92,13 +92,13 @@ def action_view(app: App) -> None:
 
 
 def action_search(app: App) -> None:
-    from reporting import format_table
+    from presentation import format_table
     from domain import Notice
     keyword = input("Keyword (title/description/author, blank = any): ").strip()
     print("  Categories: " + ", ".join(VALID_CATEGORIES))
     category = input("Category (blank = any): ").strip().lower()
     if category:
-        from validation import validate_category
+        from domain.validation import validate_category
         try:
             category = validate_category(category)
         except Exception as exc:
@@ -125,12 +125,12 @@ def action_update(app: App) -> None:
         changes["title"] = title
     cat = input(f"  Category [{target.category}]: ").strip()
     if cat:
-        from validation import validate_category
+        from domain.validation import validate_category
         changes["category"] = validate_category(cat)
     for field in ("date_posted", "expiry_date"):
         raw = input(f"  {field} [{getattr(target, field)}]: ").strip()
         if raw:
-            from validation import validate_date
+            from domain.validation import validate_date
             changes[field] = validate_date(raw, field).isoformat()
     author = input(f"  Author [{target.author}]: ").strip()
     if author:
@@ -156,7 +156,7 @@ def action_delete(app: App) -> None:
 
 
 def action_summary(app: App) -> None:
-    from reporting import format_summary
+    from presentation import format_summary
     print(C.BOLD + "\n  ANALYTICS" + C.RESET)
     print(format_summary(registry.execute("summary", app)))
     warns = registry.execute("warnings", app)

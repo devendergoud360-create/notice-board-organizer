@@ -627,7 +627,19 @@ Vercel is treated as a deliberate deployment target, not a degraded fallback.
 It has its own data layer: an isolated per-instance JSON store at `/tmp/nbo_vercel_notices.json`,
 seeded from the shipped `data/sample_notices.json`. The serverless API
 (`api/index.py`) subclasses the same `APIHandler` used by the loopback server,
-so routing, security headers, validation, and structured logging are identical.
+so routing, validation, CSP/security headers, HTML escaping, CSRF double-submit,
+and structured JSON logging are identical in both targets.
+
+Because the edge has no loopback network boundary, the Vercel handler adds a
+transport guard layer: an **allow-listed Origin/Referer check** (browser requests
+must originate from the deployed frontend or localhost dev origin) and the same
+**optional bearer token** (`API_BEARER_TOKEN`) required by the local API. Rejected
+requests emit `edge.origin_rejected` / `edge.auth_rejected` structured events.
+State-changing requests additionally inherit the double-submit CSRF check from
+`APIHandler` (`/api/csrf` is available on the edge too). The per-instance store
+is intentional: each function instance is stateless and self-seeding, which is the
+correct data design for a serverless demo; the loopback server with SQLite is the
+durable local target.
 
 - Repository: `https://github.com/CHERRY-TEC/notice-board-organizer`
 - Live demo: `https://notice-board-organizer.vercel.app` (HTTP 200 verified)

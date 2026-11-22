@@ -63,9 +63,9 @@ Four layers, documented in `docs/SRS.md`:
 
 | Layer | Contents |
 |-------|----------|
-| Presentation | `main.py` (CLI), `web/server.py` (HTTP API), `web/static/` (browser UI) |
+| Presentation | `main.py` (CLI), `presentation/` (console input wrappers + report/export presenters), `web/server.py` (HTTP API), `web/static/` (browser UI), `api/index.py` (Vercel edge) |
 | Application | `application/facade.py` (use cases), `commands.py` (Command registry), `events.py` (Observer bus + structured JSON logging) |
-| Domain | `domain/entities.py`, `domain/services.py`, `risk.py` — pure, no I/O |
+| Domain | `domain/entities.py`, `domain/services.py`, `domain/validation/` (pure validators), `risk.py` — pure, no I/O |
 | Persistence | `persistence/` — Strategy interface + registry with JSON, CSV, SQLite backends |
 
 Design patterns: **Strategy** (interchangeable, registered backends), **Command** (actions as objects in a registry), **Observer** (event bus with console + file subscribers).
