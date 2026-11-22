@@ -31,7 +31,6 @@ STORE = "/tmp/nbo_vercel_notices.json"
 # Origins permitted to call the edge API (the deployed frontend + localhost dev).
 ALLOWED_ORIGINS = {
     "https://notice-board-organizer.vercel.app",
-    "https://notice-board-organizer-grwdp4i1s-cherry-ff88.vercel.app",
     "http://127.0.0.1:8765",
     "http://localhost:8765",
 }

@@ -111,7 +111,6 @@ Cross-language parity is verified in CI across 40 records.
 
 - Repository: `https://github.com/devendergoud360-create/notice-board-organizer`
 - Live demo (stable alias): `https://notice-board-organizer.vercel.app` — HTTP 200
-- Direct production deployment: `https://notice-board-organizer-grwdp4i1s-cherry-ff88.vercel.app`
 - CI: GitHub Actions runs on every push/PR (green on `main`)
 - API reference: `docs/API_REFERENCE.md`
 - SRS: `docs/SRS.md`
