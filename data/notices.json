@@ -1,0 +1,402 @@
+[
+  {
+    "id": 1,
+    "title": "Midterm Examination Schedule",
+    "category": "academics",
+    "date_posted": "2026-10-12",
+    "expiry_date": "2026-11-16",
+    "status": "Expired",
+    "author": "Student Affairs",
+    "description": "Sample notice #1 generated for the hackathon demo."
+  },
+  {
+    "id": 2,
+    "title": "Library Maintenance",
+    "category": "events",
+    "date_posted": "2026-11-06",
+    "expiry_date": "2026-11-30",
+    "status": "Upcoming",
+    "author": "Admin",
+    "description": "Sample notice #2 generated for the hackathon demo."
+  },
+  {
+    "id": 3,
+    "title": "Career Fair 2026",
+    "category": "sports",
+    "date_posted": "2026-10-09",
+    "expiry_date": "2026-11-13",
+    "status": "Expired",
+    "author": "IT Department",
+    "description": "Sample notice #3 generated for the hackathon demo."
+  },
+  {
+    "id": 4,
+    "title": "Scholarship Application Deadline",
+    "category": "academics",
+    "date_posted": "2026-11-19",
+    "expiry_date": "2026-11-20",
+    "status": "Expired",
+    "author": "Registrar",
+    "description": "Sample notice #4 generated for the hackathon demo."
+  },
+  {
+    "id": 5,
+    "title": "Campus Clean-Up Drive",
+    "category": "sports",
+    "date_posted": "2026-11-07",
+    "expiry_date": "2027-01-05",
+    "status": "Upcoming",
+    "author": "Admin",
+    "description": "Sample notice #5 generated for the hackathon demo."
+  },
+  {
+    "id": 6,
+    "title": "Guest Lecture: AI",
+    "category": "deadlines",
+    "date_posted": "2026-10-17",
+    "expiry_date": "2026-11-27",
+    "status": "Upcoming",
+    "author": "Faculty Club",
+    "description": "Sample notice #6 generated for the hackathon demo."
+  },
+  {
+    "id": 7,
+    "title": "Sports Meet Registration",
+    "category": "maintenance",
+    "date_posted": "2026-10-26",
+    "expiry_date": "2026-11-30",
+    "status": "Upcoming",
+    "author": "Faculty Club",
+    "description": "Sample notice #7 generated for the hackathon demo."
+  },
+  {
+    "id": 8,
+    "title": "Hostel Inspection",
+    "category": "general",
+    "date_posted": "2026-11-04",
+    "expiry_date": "2026-11-05",
+    "status": "Expired",
+    "author": "Registrar",
+    "description": "Sample notice #8 generated for the hackathon demo."
+  },
+  {
+    "id": 9,
+    "title": "Tuition Fee Submission",
+    "category": "administration",
+    "date_posted": "2026-10-08",
+    "expiry_date": "2026-12-26",
+    "status": "Upcoming",
+    "author": "Student Affairs",
+    "description": "Sample notice #9 generated for the hackathon demo."
+  },
+  {
+    "id": 10,
+    "title": "Research Grant Call",
+    "category": "general",
+    "date_posted": "2026-11-12",
+    "expiry_date": "2026-11-29",
+    "status": "Upcoming",
+    "author": "Student Affairs",
+    "description": "Sample notice #10 generated for the hackathon demo."
+  },
+  {
+    "id": 11,
+    "title": "Alumni Networking Night",
+    "category": "maintenance",
+    "date_posted": "2026-11-15",
+    "expiry_date": "2026-11-16",
+    "status": "Expired",
+    "author": "Admin",
+    "description": "Sample notice #11 generated for the hackathon demo."
+  },
+  {
+    "id": 12,
+    "title": "Water Supply Interruption",
+    "category": "sports",
+    "date_posted": "2026-10-30",
+    "expiry_date": "2026-12-16",
+    "status": "Upcoming",
+    "author": "Student Affairs",
+    "description": "Sample notice #12 generated for the hackathon demo."
+  },
+  {
+    "id": 13,
+    "title": "Course Enrollment Opens",
+    "category": "deadlines",
+    "date_posted": "2026-10-01",
+    "expiry_date": "2026-11-07",
+    "status": "Expired",
+    "author": "IT Department",
+    "description": "Sample notice #13 generated for the hackathon demo."
+  },
+  {
+    "id": 14,
+    "title": "Annual Report Submission",
+    "category": "maintenance",
+    "date_posted": "2026-10-18",
+    "expiry_date": "2026-11-17",
+    "status": "Expired",
+    "author": "Admin",
+    "description": "Sample notice #14 generated for the hackathon demo."
+  },
+  {
+    "id": 15,
+    "title": "Internship Postings",
+    "category": "general",
+    "date_posted": "2026-10-17",
+    "expiry_date": "2026-12-09",
+    "status": "Upcoming",
+    "author": "Faculty Club",
+    "description": "Sample notice #15 generated for the hackathon demo."
+  },
+  {
+    "id": 16,
+    "title": "Safety Drill",
+    "category": "sports",
+    "date_posted": "2026-09-26",
+    "expiry_date": "2026-12-18",
+    "status": "Upcoming",
+    "author": "Registrar",
+    "description": "Sample notice #16 generated for the hackathon demo."
+  },
+  {
+    "id": 17,
+    "title": "Cultural Festival",
+    "category": "academics",
+    "date_posted": "2026-10-07",
+    "expiry_date": "2026-11-10",
+    "status": "Expired",
+    "author": "Registrar",
+    "description": "Sample notice #17 generated for the hackathon demo."
+  },
+  {
+    "id": 18,
+    "title": "Thesis Proposal Deadline",
+    "category": "academics",
+    "date_posted": "2026-10-03",
+    "expiry_date": "2026-12-09",
+    "status": "Upcoming",
+    "author": "Registrar",
+    "description": "Sample notice #18 generated for the hackathon demo."
+  },
+  {
+    "id": 19,
+    "title": "Wi-Fi Upgrade",
+    "category": "maintenance",
+    "date_posted": "2026-09-27",
+    "expiry_date": "2026-11-14",
+    "status": "Expired",
+    "author": "Student Affairs",
+    "description": "Sample notice #19 generated for the hackathon demo."
+  },
+  {
+    "id": 20,
+    "title": "Counseling Services",
+    "category": "events",
+    "date_posted": "2026-10-23",
+    "expiry_date": "2026-12-18",
+    "status": "Upcoming",
+    "author": "Student Affairs",
+    "description": "Sample notice #20 generated for the hackathon demo."
+  },
+  {
+    "id": 21,
+    "title": "Hackathon 2026",
+    "category": "deadlines",
+    "date_posted": "2026-10-30",
+    "expiry_date": "2026-11-28",
+    "status": "Upcoming",
+    "author": "Student Affairs",
+    "description": "Sample notice #21 generated for the hackathon demo."
+  },
+  {
+    "id": 22,
+    "title": "Exam Results Release",
+    "category": "sports",
+    "date_posted": "2026-10-08",
+    "expiry_date": "2026-11-11",
+    "status": "Expired",
+    "author": "Registrar",
+    "description": "Sample notice #22 generated for the hackathon demo."
+  },
+  {
+    "id": 23,
+    "title": "New Club Registration",
+    "category": "events",
+    "date_posted": "2026-10-18",
+    "expiry_date": "2026-12-03",
+    "status": "Upcoming",
+    "author": "IT Department",
+    "description": "Sample notice #23 generated for the hackathon demo."
+  },
+  {
+    "id": 24,
+    "title": "Parking Permit Renewal",
+    "category": "deadlines",
+    "date_posted": "2026-10-28",
+    "expiry_date": "2026-12-06",
+    "status": "Upcoming",
+    "author": "Faculty Club",
+    "description": "Sample notice #24 generated for the hackathon demo."
+  },
+  {
+    "id": 25,
+    "title": "Health Checkup Camp",
+    "category": "general",
+    "date_posted": "2026-11-07",
+    "expiry_date": "2026-12-13",
+    "status": "Upcoming",
+    "author": "Admin",
+    "description": "Sample notice #25 generated for the hackathon demo."
+  },
+  {
+    "id": 26,
+    "title": "Seminar on Cybersecurity",
+    "category": "general",
+    "date_posted": "2026-11-07",
+    "expiry_date": "2026-11-08",
+    "status": "Expired",
+    "author": "Student Affairs",
+    "description": "Sample notice #26 generated for the hackathon demo."
+  },
+  {
+    "id": 27,
+    "title": "Budget Approval Meeting",
+    "category": "academics",
+    "date_posted": "2026-10-27",
+    "expiry_date": "2026-12-06",
+    "status": "Upcoming",
+    "author": "Registrar",
+    "description": "Sample notice #27 generated for the hackathon demo."
+  },
+  {
+    "id": 28,
+    "title": "Lost & Found Notice",
+    "category": "events",
+    "date_posted": "2026-09-24",
+    "expiry_date": "2026-12-12",
+    "status": "Upcoming",
+    "author": "IT Department",
+    "description": "Sample notice #28 generated for the hackathon demo."
+  },
+  {
+    "id": 29,
+    "title": "Graduation Rehearsal",
+    "category": "events",
+    "date_posted": "2026-10-27",
+    "expiry_date": "2026-12-30",
+    "status": "Upcoming",
+    "author": "Student Affairs",
+    "description": "Sample notice #29 generated for the hackathon demo."
+  },
+  {
+    "id": 30,
+    "title": "Lab Equipment Upgrade",
+    "category": "deadlines",
+    "date_posted": "2026-11-13",
+    "expiry_date": "2026-12-03",
+    "status": "Upcoming",
+    "author": "Faculty Club",
+    "description": "Sample notice #30 generated for the hackathon demo."
+  },
+  {
+    "id": 31,
+    "title": "Midterm Examination Schedule",
+    "category": "deadlines",
+    "date_posted": "2026-10-18",
+    "expiry_date": "2026-12-05",
+    "status": "Upcoming",
+    "author": "Faculty Club",
+    "description": "Sample notice #31 generated for the hackathon demo."
+  },
+  {
+    "id": 32,
+    "title": "Library Maintenance",
+    "category": "administration",
+    "date_posted": "2026-10-25",
+    "expiry_date": "2026-12-23",
+    "status": "Upcoming",
+    "author": "Registrar",
+    "description": "Sample notice #32 generated for the hackathon demo."
+  },
+  {
+    "id": 33,
+    "title": "Career Fair 2026",
+    "category": "maintenance",
+    "date_posted": "2026-11-13",
+    "expiry_date": "2027-01-06",
+    "status": "Upcoming",
+    "author": "Admin",
+    "description": "Sample notice #33 generated for the hackathon demo."
+  },
+  {
+    "id": 34,
+    "title": "Scholarship Application Deadline",
+    "category": "general",
+    "date_posted": "2026-10-04",
+    "expiry_date": "2026-11-08",
+    "status": "Expired",
+    "author": "Admin",
+    "description": "Sample notice #34 generated for the hackathon demo."
+  },
+  {
+    "id": 35,
+    "title": "Campus Clean-Up Drive",
+    "category": "general",
+    "date_posted": "2026-11-12",
+    "expiry_date": "2026-11-22",
+    "status": "Active",
+    "author": "IT Department",
+    "description": "Sample notice #35 generated for the hackathon demo."
+  },
+  {
+    "id": 36,
+    "title": "Guest Lecture: AI",
+    "category": "maintenance",
+    "date_posted": "2026-10-14",
+    "expiry_date": "2026-11-10",
+    "status": "Expired",
+    "author": "IT Department",
+    "description": "Sample notice #36 generated for the hackathon demo."
+  },
+  {
+    "id": 37,
+    "title": "Sports Meet Registration",
+    "category": "sports",
+    "date_posted": "2026-10-14",
+    "expiry_date": "2026-12-31",
+    "status": "Upcoming",
+    "author": "Student Affairs",
+    "description": "Sample notice #37 generated for the hackathon demo."
+  },
+  {
+    "id": 38,
+    "title": "Hostel Inspection",
+    "category": "deadlines",
+    "date_posted": "2026-10-17",
+    "expiry_date": "2026-11-03",
+    "status": "Expired",
+    "author": "Admin",
+    "description": "Sample notice #38 generated for the hackathon demo."
+  },
+  {
+    "id": 39,
+    "title": "Tuition Fee Submission",
+    "category": "general",
+    "date_posted": "2026-10-09",
+    "expiry_date": "2026-12-06",
+    "status": "Upcoming",
+    "author": "Student Affairs",
+    "description": "Sample notice #39 generated for the hackathon demo."
+  },
+  {
+    "id": 40,
+    "title": "Research Grant Call",
+    "category": "maintenance",
+    "date_posted": "2026-11-14",
+    "expiry_date": "2026-12-09",
+    "status": "Upcoming",
+    "author": "Registrar",
+    "description": "Sample notice #40 generated for the hackathon demo."
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "name": "notice-board-organizer",
+  "version": "1.0.0",
+  "description": "A beginner-friendly, **zero-dependency (Python 3.10+ standard library only)** console application to store, validate, search, summarise, and export campus notices.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "playwright": "^1.65.1"
+  }
+}

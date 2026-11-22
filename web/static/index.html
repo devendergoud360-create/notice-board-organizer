@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notice Board Organizer</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Notice Board Organizer</h1>
+    <p>LocalImpact Challenge · Project #30</p>
+  </header>
+  <nav>
+    <button id="btn-refresh">Refresh</button>
+    <button id="btn-summary">Summary</button>
+    <button id="btn-warnings">Warnings</button>
+    <button id="btn-rank">Risk Ranking</button>
+  </nav>
+  <main>
+    <section id="panel" aria-live="polite"></section>
+    <form id="add-form" hidden>
+      <h2>Add Notice</h2>
+      <label>Title <input name="title" required maxlength="120"></label>
+      <label>Category
+        <select name="category">
+          <option>academics</option><option>events</option>
+          <option>administration</option><option>maintenance</option>
+          <option>sports</option><option>deadlines</option><option>general</option>
+        </select>
+      </label>
+      <label>Date posted <input name="date_posted" type="date" required></label>
+      <label>Expiry date <input name="expiry_date" type="date" required></label>
+      <label>Author <input name="author" value="Admin"></label>
+      <label>Description <textarea name="description"></textarea></label>
+      <button type="submit">Save</button>
+    </form>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>

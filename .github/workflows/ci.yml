@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Compile check
+        run: python -m compileall -q . -x '(node_modules|\.git)'
+
+      - name: Install test dependencies
+        run: pip install python-docx python-pptx
+
+      - name: Generate sample data
+        run: python seed_data.py
+
+      - name: Full Python test suite
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
+
+      - name: Cross-language parity validation
+        run: python scripts/parity_check.py
+
+      - name: Install Node deps and browser
+        run: |
+          npm install --no-audit --no-fund
+          npx playwright install chromium
+
+      - name: Playwright browser QA
+        run: node tests/browser_qa.js
+
+      - name: Validate Office deliverables
+        run: python -c "
+          from pptx import Presentation
+          from docx import Document
+          assert len(Presentation('docs/NoticeBoardOrganizer_Presentation.pptx').slides) == 14
+          d = Document('docs/NoticeBoardOrganizer_Documentation.docx')
+          assert len([p for p in d.paragraphs if p.style.name.startswith('Heading')]) >= 15
+          print('Office deliverables OK')
+        "

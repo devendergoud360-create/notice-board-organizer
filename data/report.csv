@@ -1,0 +1,42 @@
+id,title,category,date_posted,expiry_date,status,author,description
+1,Midterm Examination Schedule,academics,2026-10-12,2026-11-16,Expired,Student Affairs,Sample notice #1 generated for the hackathon demo.
+2,Library Maintenance,events,2026-11-06,2026-11-30,Upcoming,Admin,Sample notice #2 generated for the hackathon demo.
+3,Career Fair 2026,sports,2026-10-09,2026-11-13,Expired,IT Department,Sample notice #3 generated for the hackathon demo.
+4,Scholarship Application Deadline,academics,2026-11-19,2026-11-20,Expired,Registrar,Sample notice #4 generated for the hackathon demo.
+5,Campus Clean-Up Drive,sports,2026-11-07,2027-01-05,Upcoming,Admin,Sample notice #5 generated for the hackathon demo.
+6,Guest Lecture: AI,deadlines,2026-10-17,2026-11-27,Upcoming,Faculty Club,Sample notice #6 generated for the hackathon demo.
+7,Sports Meet Registration,maintenance,2026-10-26,2026-11-30,Upcoming,Faculty Club,Sample notice #7 generated for the hackathon demo.
+8,Hostel Inspection,general,2026-11-04,2026-11-05,Expired,Registrar,Sample notice #8 generated for the hackathon demo.
+9,Tuition Fee Submission,administration,2026-10-08,2026-12-26,Upcoming,Student Affairs,Sample notice #9 generated for the hackathon demo.
+10,Research Grant Call,general,2026-11-12,2026-11-29,Upcoming,Student Affairs,Sample notice #10 generated for the hackathon demo.
+11,Alumni Networking Night,maintenance,2026-11-15,2026-11-16,Expired,Admin,Sample notice #11 generated for the hackathon demo.
+12,Water Supply Interruption,sports,2026-10-30,2026-12-16,Upcoming,Student Affairs,Sample notice #12 generated for the hackathon demo.
+13,Course Enrollment Opens,deadlines,2026-10-01,2026-11-07,Expired,IT Department,Sample notice #13 generated for the hackathon demo.
+14,Annual Report Submission,maintenance,2026-10-18,2026-11-17,Expired,Admin,Sample notice #14 generated for the hackathon demo.
+15,Internship Postings,general,2026-10-17,2026-12-09,Upcoming,Faculty Club,Sample notice #15 generated for the hackathon demo.
+16,Safety Drill,sports,2026-09-26,2026-12-18,Upcoming,Registrar,Sample notice #16 generated for the hackathon demo.
+17,Cultural Festival,academics,2026-10-07,2026-11-10,Expired,Registrar,Sample notice #17 generated for the hackathon demo.
+18,Thesis Proposal Deadline,academics,2026-10-03,2026-12-09,Upcoming,Registrar,Sample notice #18 generated for the hackathon demo.
+19,Wi-Fi Upgrade,maintenance,2026-09-27,2026-11-14,Expired,Student Affairs,Sample notice #19 generated for the hackathon demo.
+20,Counseling Services,events,2026-10-23,2026-12-18,Upcoming,Student Affairs,Sample notice #20 generated for the hackathon demo.
+21,Hackathon 2026,deadlines,2026-10-30,2026-11-28,Upcoming,Student Affairs,Sample notice #21 generated for the hackathon demo.
+22,Exam Results Release,sports,2026-10-08,2026-11-11,Expired,Registrar,Sample notice #22 generated for the hackathon demo.
+23,New Club Registration,events,2026-10-18,2026-12-03,Upcoming,IT Department,Sample notice #23 generated for the hackathon demo.
+24,Parking Permit Renewal,deadlines,2026-10-28,2026-12-06,Upcoming,Faculty Club,Sample notice #24 generated for the hackathon demo.
+25,Health Checkup Camp,general,2026-11-07,2026-12-13,Upcoming,Admin,Sample notice #25 generated for the hackathon demo.
+26,Seminar on Cybersecurity,general,2026-11-07,2026-11-08,Expired,Student Affairs,Sample notice #26 generated for the hackathon demo.
+27,Budget Approval Meeting,academics,2026-10-27,2026-12-06,Upcoming,Registrar,Sample notice #27 generated for the hackathon demo.
+28,Lost & Found Notice,events,2026-09-24,2026-12-12,Upcoming,IT Department,Sample notice #28 generated for the hackathon demo.
+29,Graduation Rehearsal,events,2026-10-27,2026-12-30,Upcoming,Student Affairs,Sample notice #29 generated for the hackathon demo.
+30,Lab Equipment Upgrade,deadlines,2026-11-13,2026-12-03,Upcoming,Faculty Club,Sample notice #30 generated for the hackathon demo.
+31,Midterm Examination Schedule,deadlines,2026-10-18,2026-12-05,Upcoming,Faculty Club,Sample notice #31 generated for the hackathon demo.
+32,Library Maintenance,administration,2026-10-25,2026-12-23,Upcoming,Registrar,Sample notice #32 generated for the hackathon demo.
+33,Career Fair 2026,maintenance,2026-11-13,2027-01-06,Upcoming,Admin,Sample notice #33 generated for the hackathon demo.
+34,Scholarship Application Deadline,general,2026-10-04,2026-11-08,Expired,Admin,Sample notice #34 generated for the hackathon demo.
+35,Campus Clean-Up Drive,general,2026-11-12,2026-11-22,Active,IT Department,Sample notice #35 generated for the hackathon demo.
+36,Guest Lecture: AI,maintenance,2026-10-14,2026-11-10,Expired,IT Department,Sample notice #36 generated for the hackathon demo.
+37,Sports Meet Registration,sports,2026-10-14,2026-12-31,Upcoming,Student Affairs,Sample notice #37 generated for the hackathon demo.
+38,Hostel Inspection,deadlines,2026-10-17,2026-11-03,Expired,Admin,Sample notice #38 generated for the hackathon demo.
+39,Tuition Fee Submission,general,2026-10-09,2026-12-06,Upcoming,Student Affairs,Sample notice #39 generated for the hackathon demo.
+40,Research Grant Call,maintenance,2026-11-14,2026-12-09,Upcoming,Registrar,Sample notice #40 generated for the hackathon demo.
+41,Final Exam,academics,2026-11-22,2026-11-24,Upcoming,Admin,
