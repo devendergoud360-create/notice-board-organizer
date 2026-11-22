@@ -44,11 +44,4 @@ jobs:
         run: node tests/browser_qa.js
 
       - name: Validate Office deliverables
-        run: python -c "
-          from pptx import Presentation
-          from docx import Document
-          assert len(Presentation('docs/NoticeBoardOrganizer_Presentation.pptx').slides) == 14
-          d = Document('docs/NoticeBoardOrganizer_Documentation.docx')
-          assert len([p for p in d.paragraphs if p.style.name.startswith('Heading')]) >= 15
-          print('Office deliverables OK')
-        "
+        run: python scripts/validate_office.py
