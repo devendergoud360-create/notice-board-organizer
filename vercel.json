@@ -1,0 +1,15 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "name": "notice-board-organizer",
+  "version": 2,
+  "functions": {
+    "api/**/*.py": {
+      "excludeFiles": "{tests/**,docs/**,node_modules/**,__pycache__/**,data/*.db}"
+    }
+  },
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/index.py" },
+    { "src": "/static/(.*)", "dest": "/web/static/$1" },
+    { "src": "/(.*)", "dest": "/web/static/index.html" }
+  ]
+}
