@@ -621,4 +621,26 @@ The original PDF brief contained two notable tensions, resolved as follows:
 
 ---
 
+## 17. Deployment Target (Vercel)
+
+Vercel is treated as a deliberate deployment target, not a degraded fallback.
+It has its own data layer: an isolated per-instance JSON store at `/tmp/nbo_vercel_notices.json`,
+seeded from the shipped `data/sample_notices.json`. The serverless API
+(`api/index.py`) subclasses the same `APIHandler` used by the loopback server,
+so routing, security headers, validation, and structured logging are identical.
+
+- Repository: `https://github.com/CHERRY-TEC/notice-board-organizer`
+- Live demo: `https://notice-board-organizer.vercel.app` (HTTP 200 verified)
+- CI: GitHub Actions (`.github/workflows/ci.yml`) runs compile check, 30 Python
+  tests, cross-language parity validation, Playwright browser QA, and Office
+  deliverable validation on every push and PR.
+- Redeploy: `vercel --prod --yes`.
+
+Note: Vercel Git auto-deploy connection was unavailable in the build environment
+(CLI Git connect requires additional GitHub App permissions). Production deploys
+are therefore performed explicitly with the Vercel CLI; the push-triggered CI is
+green on `main`.
+
+---
+
 *End of SRS — Notice Board Organizer v1.0.0.*

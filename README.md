@@ -110,9 +110,18 @@ Cross-language parity is verified in CI across 40 records.
 ## 8. Live URLs & repository
 
 - Repository: `https://github.com/CHERRY-TEC/notice-board-organizer`
-- Live demo: `https://notice-board-organizer.vercel.app`
+- Live demo (stable alias): `https://notice-board-organizer.vercel.app` — HTTP 200
+- Direct production deployment: `https://notice-board-organizer-grwdp4i1s-cherry-ff88.vercel.app`
+- CI: GitHub Actions runs on every push/PR (green on `main`)
 - API reference: `docs/API_REFERENCE.md`
 - SRS: `docs/SRS.md`
+
+Deployment note: the Vercel deployment is a deliberate target with its own data
+layer (per-instance `/tmp` JSON store seeded from `data/sample_notices.json`), reusing
+the same domain/application layers. Redeploy with `vercel --prod --yes`. The GitHub
+Actions CI is push-triggered and green; Vercel Git auto-deploy connection was not
+available in this environment (CLI Git connect requires additional GitHub App
+permissions), so production deploys are performed explicitly with the CLI.
 
 ## 9. Two-minute demo script
 
