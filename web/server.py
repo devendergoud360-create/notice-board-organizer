@@ -156,6 +156,19 @@ class APIHandler(BaseHTTPRequestHandler):
             return self._error(404, "not found")
         if not self._authorized(state):
             return
+        # Granular role check: viewers may read only; mutations need admin.
+        from application.auth import authorize
+        permission = "read" if method == "GET" else (
+            "delete" if method == "DELETE" else
+            "update" if method == "PUT" else "add")
+        if "/api/import" in path:
+            permission = "import"
+        if "/api/export" in path:
+            permission = "export"
+        allowed, reason = authorize(self.headers, permission)
+        if not allowed:
+            bus.emit("auth.denied", {"permission": permission, "reason": reason})
+            return self._error(403, reason)
 
         try:
             return self._api(method, path, qs)

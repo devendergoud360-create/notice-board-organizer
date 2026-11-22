@@ -306,6 +306,15 @@ graph LR
 
 Events are dictionaries with at least: `event` (name), `timestamp` (ISO-8601 UTC), `actor`, and a `data` object. The JSON logger writes one compact JSON object per line to `data/events.jsonl`, producing an auditable trail of all mutations.
 
+**Asynchronous delivery for high concurrency:** the bus publishes to a bounded
+(`10,000` entry) queue drained by a daemon worker thread, so slow sinks (disk,
+network) never block request handling. `emit()` is non-blocking; `emit_sync()`
+delivers inline for critical paths; `flush()` waits for pending delivery and
+`shutdown()` drains then stops the worker. Under sink back-pressure the queue
+falls back to inline delivery rather than dropping events. The `FileSink` uses
+its own lock for safe concurrent appends. Tests (`tests/test_async_auth.py`)
+verify 50-event async delivery, sync delivery, and JSONL file-sink integrity.
+
 ### 6.5 Request Flow (HTTP)
 
 ```mermaid
@@ -359,7 +368,31 @@ sequenceDiagram
 - CSV column order: `id,title,category,date_posted,expiry_date,status,author,description`.
 - SQL storage (Strategy) uses a `notices` table with the same columns (`id INTEGER PRIMARY KEY`, text fields, DATE-as-ISO text).
 
-### 7.4 JSON Store Example
+### 7.4 Database Indexing & Scalability (SQLite Strategy)
+
+Domain algorithms are O(n) over the in-memory collection, which is optimal for
+the dataset sizes in scope (hackathon demo: tens to thousands of records). To
+support **very large persisted datasets**, the SQLite backend adds indexes on
+the high-selectivity columns used by filtering and expiry queries:
+
+| Index | Columns | Query it accelerates |
+| --- | --- | --- |
+| `idx_notices_category` | `category` | `WHERE category = ?` (category filter) |
+| `idx_notices_expiry` | `expiry_date` | `WHERE expiry_date < ?` (overdue / expiring range) |
+| `idx_notices_status` | `status` | `WHERE status = ?` (status filter) |
+| `idx_notices_category_expiry` | `(category, expiry_date)` | combined category + expiry filtering |
+| `idx_notices_posted` | `date_posted` | posted-date range / sort |
+
+Indexed query methods (`query_by_category`, `query_expiring_before`,
+`query_by_status`) issue SQL predicate queries rather than scanning the whole
+table. `explain_index_usage()` exposes `EXPLAIN QUERY PLAN`, and the automated
+test suite (`tests/test_indexing.py`) asserts both index existence and that the
+planner uses `idx_notices_category`, `idx_notices_expiry`, and
+`idx_notices_status`. Index creation is idempotent
+(`CREATE INDEX IF NOT EXISTS`). Writes remain atomic (temp file + `os.replace`
+for JSON/CSV; transactional `DELETE`+`executemany` for SQLite).
+
+### 7.5 JSON Store Example
 
 ```json
 [
@@ -400,6 +433,23 @@ The authoritative, exhaustive reference — with full request/response JSON, `cu
 **Error codes:** `400` bad request/malformed JSON, `401` missing/invalid bearer token, `403` CSRF/origin failure, `404` not found, `413` body too large, `422` validation failure, `500` internal error.
 
 **Security behaviour (all state-changing endpoints):** loopback bind, `Origin`/`Referer` allow-list, double-submit CSRF (session cookie `HttpOnly`, CSRF cookie readable and echoed via `X-CSRF-Token`), optional bearer token via constant-time compare, static-file whitelist, 1 MiB body cap, strict CSP, and HTML escaping of all user-controlled strings in any HTML response.
+
+### 8.1 Granular Authorization Roles
+
+Two roles are enforced on every API request via `application/auth.py`
+(`authorize(headers, permission)`):
+
+| Role | `read` | `add` | `update` | `delete` | `import` | `export` |
+| --- | --- | --- | --- | --- | --- | --- |
+| **Viewer** | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Admin** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+
+The role is resolved from `X-Role: viewer|admin` or from a `token:role` suffix in
+the bearer token (e.g. `Authorization: Bearer <token>:viewer`). When no API
+bearer token is configured the app runs in single-user Admin mode for backwards
+compatibility. Denials emit `auth.denied` and return `403` with the reason.
+`tests/test_async_auth.py` verifies the permission matrix and token/header
+resolution.
 
 ---
 
