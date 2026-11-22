@@ -641,7 +641,7 @@ is intentional: each function instance is stateless and self-seeding, which is t
 correct data design for a serverless demo; the loopback server with SQLite is the
 durable local target.
 
-- Repository: `https://github.com/CHERRY-TEC/notice-board-organizer`
+- Repository: `https://github.com/devendergoud360-create/notice-board-organizer`
 - Live demo: `https://notice-board-organizer.vercel.app` (HTTP 200 verified)
 - CI: GitHub Actions (`.github/workflows/ci.yml`) runs compile check, 30 Python
   tests, cross-language parity validation, Playwright browser QA, and Office
