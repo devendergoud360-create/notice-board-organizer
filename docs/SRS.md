@@ -172,7 +172,7 @@ Requirements are numbered `FR-x` and mapped to the original PDF problem brief.
 
 | ID | Category | Requirement |
 | --- | --- | --- |
-| NFR-1 | **Reliability** | Corrupt/missing/empty data MUST NOT crash the app; every file access is wrapped in `try/except`; atomic writes prevent partial files. |
+| NFR-1 | **Reliability** | Corrupt/missing/empty data MUST NOT crash the app; every file access is wrapped in `try/except`; atomic writes (temp file + `os.replace` with retry) prevent partial files. Oversized HTTP bodies are fully drained before returning `413` so the connection closes cleanly (avoids `WinError 10053`). `scripts/stress_tests.py` runs the suite 15× to prove zero flaky tests. |
 | NFR-2 | **Reliability** | Status is always *derived*, never trusted from stored data — a restart recomputes overdue flags correctly. |
 | NFR-3 | **Reliability** | Every API mutation emits an event; logs are newline-delimited JSON (JSONL) so a single malformed event cannot break the log. |
 | NFR-4 | **Security** | HTTP server binds to `127.0.0.1` only; no wildcard `0.0.0.0` bind. |

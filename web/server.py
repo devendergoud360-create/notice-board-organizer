@@ -89,6 +89,13 @@ class APIHandler(BaseHTTPRequestHandler):
         except ValueError:
             raise ValueError("invalid Content-Length")
         if size > MAX_BODY_BYTES:
+            # Drain the oversized body before responding. On Windows, closing a
+            # connection with unread inbound data triggers WinError 10053 at the
+            # client, which would mask the intended 413 response.
+            try:
+                self.rfile.read(size)
+            except OSError:
+                pass
             self._error(413, "request body too large")
             return None
         raw = self.rfile.read(size)
@@ -272,6 +279,9 @@ def build_server(port: int = 8765, backend: str = "json",
     app = App(backend=backend, path=path, log_path=log_path)
     APIHandler.app = app
     httpd = ThreadingHTTPServer(("127.0.0.1", port), APIHandler)
+    # Request handler threads are daemons so shutdown() never hangs on a
+    # lingering connection (important under high-concurrency / test loads).
+    httpd.daemon_threads = True
     return httpd
 
 

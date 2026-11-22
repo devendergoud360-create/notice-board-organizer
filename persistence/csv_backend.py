@@ -46,17 +46,17 @@ class CsvBackend(StorageBackend):
         return notices
 
     def save(self, notices: List[Notice]) -> bool:
-        try:
-            os.makedirs(os.path.dirname(self.path) or ".", exist_ok=True)
-            temp = self.path + ".tmp"
+        def _write(temp: str) -> None:
             with open(temp, "w", encoding="utf-8", newline="") as fh:
                 writer = csv.DictWriter(fh, fieldnames=CSV_FIELDS)
                 writer.writeheader()
                 for n in notices:
                     writer.writerow(n.to_dict())
-            os.replace(temp, self.path)
+
+        from .base import atomic_write
+        ok = atomic_write(self.path, _write)
+        if ok:
             self._emit("storage.saved", {"backend": "csv", "count": len(notices)})
-            return True
-        except OSError as exc:
-            self._emit("storage.save_failed", {"error": str(exc)})
-            return False
+        else:
+            self._emit("storage.save_failed", {"backend": "csv"})
+        return ok

@@ -38,11 +38,17 @@ class ApiTest(unittest.TestCase):
         for k, v in (headers or {}).items():
             req.add_header(k, v)
         op = opener or urllib.request.build_opener()
-        try:
-            with op.open(req, timeout=5) as r:
-                return r.status, r.headers, r.read().decode()
-        except urllib.error.HTTPError as e:
-            return e.code, e.headers, e.read().decode()
+        for attempt in range(3):
+            try:
+                with op.open(req, timeout=5) as r:
+                    return r.status, r.headers, r.read().decode()
+            except urllib.error.HTTPError as e:
+                return e.code, e.headers, e.read().decode()
+            except (ConnectionResetError, TimeoutError) as exc:
+                if attempt == 2:
+                    raise
+                import time
+                time.sleep(0.1 * (attempt + 1))
 
     def _csrf(self, opener):
         status, headers, _ = self._req("/api/csrf", opener=opener)
