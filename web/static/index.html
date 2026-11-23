@@ -4,38 +4,110 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Notice Board Organizer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-  <header>
-    <h1>Notice Board Organizer</h1>
-    <p>LocalImpact Challenge · Project #30</p>
-  </header>
-  <nav>
-    <button id="btn-refresh">Refresh</button>
-    <button id="btn-summary">Summary</button>
-    <button id="btn-warnings">Warnings</button>
-    <button id="btn-rank">Risk Ranking</button>
-  </nav>
-  <main>
-    <section id="panel" aria-live="polite"></section>
-    <form id="add-form" hidden>
-      <h2>Add Notice</h2>
-      <label>Title <input name="title" required maxlength="120"></label>
-      <label>Category
-        <select name="category">
-          <option>academics</option><option>events</option>
-          <option>administration</option><option>maintenance</option>
-          <option>sports</option><option>deadlines</option><option>general</option>
-        </select>
-      </label>
-      <label>Date posted <input name="date_posted" type="date" required></label>
-      <label>Expiry date <input name="expiry_date" type="date" required></label>
-      <label>Author <input name="author" value="Admin"></label>
-      <label>Description <textarea name="description"></textarea></label>
-      <button type="submit">Save</button>
-    </form>
-  </main>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">N</div>
+        <div>
+          <div class="brand-name">NoticeBoard</div>
+          <div class="brand-sub">Organizer</div>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Main navigation">
+        <button class="nav-item active" data-view="notices" id="btn-refresh">
+          <span class="nav-ico">▤</span><span>All Notices</span>
+        </button>
+        <button class="nav-item" data-view="summary" id="btn-summary">
+          <span class="nav-ico">◫</span><span>Summary</span>
+        </button>
+        <button class="nav-item" data-view="warnings" id="btn-warnings">
+          <span class="nav-ico">⚠</span><span>Warnings</span>
+          <span class="nav-badge" id="warn-count" hidden>0</span>
+        </button>
+        <button class="nav-item" data-view="rank" id="btn-rank">
+          <span class="nav-ico">★</span><span>Risk Ranking</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-foot">
+        <button class="btn-add" id="btn-add">＋ New Notice</button>
+        <div class="version">LocalImpact · Project #30 · v1.0</div>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1 id="page-title">All Notices</h1>
+          <p class="subtitle" id="page-sub">Browse, search and manage every notice in one place.</p>
+        </div>
+        <div class="top-actions">
+          <div class="search-wrap">
+            <span class="search-ico">⌕</span>
+            <input id="search" type="search" placeholder="Search notices…" aria-label="Search notices">
+          </div>
+          <button class="icon-btn" id="btn-theme" title="Toggle theme">◐</button>
+        </div>
+      </header>
+
+      <!-- Stat cards -->
+      <section class="stats" id="stats" aria-label="Key metrics"></section>
+
+      <!-- Panel -->
+      <section class="panel" id="panel" aria-live="polite"></section>
+    </main>
+  </div>
+
+  <!-- Add notice modal -->
+  <div class="modal-backdrop" id="modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-head">
+        <h2 id="modal-title">Add a new notice</h2>
+        <button class="icon-btn" id="btn-close-modal" aria-label="Close">✕</button>
+      </div>
+      <form id="add-form">
+        <label class="field">Title
+          <input name="title" required maxlength="120" placeholder="e.g. Midterm Exam Schedule">
+        </label>
+        <div class="field-row">
+          <label class="field">Category
+            <select name="category">
+              <option>academics</option><option>events</option>
+              <option>administration</option><option>maintenance</option>
+              <option>sports</option><option>deadlines</option><option>general</option>
+            </select>
+          </label>
+          <label class="field">Author
+            <input name="author" value="Admin">
+          </label>
+        </div>
+        <div class="field-row">
+          <label class="field">Date posted
+            <input name="date_posted" type="date" required>
+          </label>
+          <label class="field">Expiry date
+            <input name="expiry_date" type="date" required>
+          </label>
+        </div>
+        <label class="field">Description
+          <textarea name="description" rows="3" placeholder="Optional details…"></textarea>
+        </label>
+        <div class="modal-actions">
+          <button type="button" class="btn-ghost" id="btn-cancel">Cancel</button>
+          <button type="submit" class="btn-primary">Save notice</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
   <script src="/static/app.js"></script>
 </body>
 </html>

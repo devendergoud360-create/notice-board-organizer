@@ -94,6 +94,12 @@ class Notice:
             "description": self.description,
         }
 
+    def public_dict(self) -> Dict[str, Any]:
+        """API representation including derived days_remaining."""
+        data = self.to_dict()
+        data["days_remaining"] = self.days_remaining()
+        return data
+
     @staticmethod
     def from_dict(data: Dict[str, Any]) -> "Notice":
         expiry = parse_date(data["expiry_date"])

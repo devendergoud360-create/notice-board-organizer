@@ -205,7 +205,7 @@ class APIHandler(BaseHTTPRequestHandler):
         if path == "/api/notices":
             if method == "GET":
                 return self._send(200, {"notices": [
-                    n.to_dict() for n in app.search(qs.get("keyword", ""), qs.get("category", ""))
+                    n.public_dict() for n in app.search(qs.get("keyword", ""), qs.get("category", ""))
                 ]})
             if method == "POST":
                 body = self._read_body()
@@ -225,7 +225,7 @@ class APIHandler(BaseHTTPRequestHandler):
                     )
                 except (KeyError, ValueError) as exc:
                     return self._error(422, str(exc))
-                return self._send(201, created.to_dict())
+                return self._send(201, created.public_dict())
             return self._error(405, "method not allowed")
 
         if path.startswith("/api/notices/"):
@@ -239,7 +239,7 @@ class APIHandler(BaseHTTPRequestHandler):
             if method == "GET":
                 if qs.get("risk"):
                     return self._send(200, app.risk(nid))
-                return self._send(200, notice.to_dict())
+                return self._send(200, notice.public_dict())
             if method == "PUT":
                 body = self._read_body()
                 if body is None:
@@ -250,7 +250,7 @@ class APIHandler(BaseHTTPRequestHandler):
                 if "expiry_date" in changes:
                     changes["expiry_date"] = parse_date(changes["expiry_date"]).isoformat()
                 updated = app.update(nid, **changes)
-                return self._send(200, updated.to_dict())
+                return self._send(200, updated.public_dict())
             if method == "DELETE":
                 app.delete(nid)
                 return self._send(200, {"deleted": nid})

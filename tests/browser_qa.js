@@ -69,7 +69,10 @@ const BASE = `http://127.0.0.1:${PORT}`;
       check(`${id} shows ${expected}`, text.includes(expected));
     }
 
-    // Add a notice through the form.
+    // Add a notice through the modal form.
+    await page.click('#btn-add');
+    await page.waitForTimeout(150);
+    check('add modal opens', await page.locator('#modal').isVisible());
     const today = new Date().toISOString().slice(0, 10);
     const expiry = new Date(Date.now() + 5 * 86400000).toISOString().slice(0, 10);
     await page.fill('input[name="title"]', 'Browser QA Notice');
