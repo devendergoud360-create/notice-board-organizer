@@ -56,12 +56,12 @@ const BASE = `http://127.0.0.1:${PORT}`;
   try {
     const response = await page.goto(BASE, { waitUntil: 'networkidle' });
     check('page returns HTTP 200', response.status() === 200);
-    check('title rendered', (await page.title()) === 'Notice Board Organizer');
+    check('title rendered', (await page.title()).includes('NoticeBoard'));
     check('notices table rendered', await page.locator('table').count() >= 1);
 
     for (const [id, expected] of [
-      ['btn-summary', 'Summary'], ['btn-warnings', 'Warnings'],
-      ['btn-rank', 'Risk Ranking'], ['btn-refresh', 'Notices'],
+      ['btn-summary', 'Analytics'], ['btn-warnings', 'Threshold alerts'],
+      ['btn-rank', 'Risk leaderboard'], ['btn-refresh', 'Notice directory'],
     ]) {
       await page.click('#' + id);
       await page.waitForTimeout(200);

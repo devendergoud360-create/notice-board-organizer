@@ -3,61 +3,65 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Notice Board Organizer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <title>NoticeBoard — Command Center</title>
   <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
+  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+
   <div class="app">
     <!-- Sidebar -->
     <aside class="sidebar">
       <div class="brand">
-        <div class="brand-mark">N</div>
-        <div>
+        <div class="brand-mark"><span>N</span></div>
+        <div class="brand-text">
           <div class="brand-name">NoticeBoard</div>
-          <div class="brand-sub">Organizer</div>
+          <div class="brand-sub">COMMAND CENTER</div>
         </div>
       </div>
 
       <nav class="nav" aria-label="Main navigation">
+        <div class="nav-label">WORKSPACE</div>
         <button class="nav-item active" data-view="notices" id="btn-refresh">
-          <span class="nav-ico">▤</span><span>All Notices</span>
+          <span class="nav-ico">▦</span><span>All Notices</span><span class="nav-count" id="nav-count">0</span>
         </button>
         <button class="nav-item" data-view="summary" id="btn-summary">
-          <span class="nav-ico">◫</span><span>Summary</span>
+          <span class="nav-ico">◈</span><span>Analytics</span>
         </button>
         <button class="nav-item" data-view="warnings" id="btn-warnings">
-          <span class="nav-ico">⚠</span><span>Warnings</span>
-          <span class="nav-badge" id="warn-count" hidden>0</span>
+          <span class="nav-ico">⚡</span><span>Warnings</span><span class="nav-badge" id="warn-count" hidden>0</span>
         </button>
         <button class="nav-item" data-view="rank" id="btn-rank">
-          <span class="nav-ico">★</span><span>Risk Ranking</span>
+          <span class="nav-ico">✦</span><span>Risk Radar</span>
         </button>
       </nav>
 
-      <div class="sidebar-foot">
-        <button class="btn-add" id="btn-add">＋ New Notice</button>
-        <div class="version">LocalImpact · Project #30 · v1.0</div>
+      <div class="sidebar-bottom">
+        <div class="mini-chart" id="mini-chart" aria-hidden="true"></div>
+        <button class="btn-add" id="btn-add"><span>＋</span> New Notice</button>
+        <div class="version">LOCALIMPACT <span>·</span> PROJECT #30</div>
       </div>
     </aside>
 
-    <!-- Main content -->
+    <!-- Main -->
     <main class="main">
       <header class="topbar">
-        <div>
+        <div class="page-heading">
+          <div class="eyebrow" id="page-eyebrow">OVERVIEW / NOTICES</div>
           <h1 id="page-title">All Notices</h1>
-          <p class="subtitle" id="page-sub">Browse, search and manage every notice in one place.</p>
+          <p class="subtitle" id="page-sub">Every notice, beautifully organized and always in sync.</p>
         </div>
         <div class="top-actions">
           <div class="search-wrap">
             <span class="search-ico">⌕</span>
-            <input id="search" type="search" placeholder="Search notices…" aria-label="Search notices">
+            <input id="search" type="search" placeholder="Search anything…" aria-label="Search notices">
           </div>
+          <div class="live-dot" title="Live data"><span></span> LIVE</div>
           <button class="icon-btn" id="btn-theme" title="Toggle theme">◐</button>
         </div>
       </header>
 
-      <!-- Stat cards -->
+      <!-- Hero stat cards -->
       <section class="stats" id="stats" aria-label="Key metrics"></section>
 
       <!-- Panel -->
@@ -65,16 +69,20 @@
     </main>
   </div>
 
-  <!-- Add notice modal -->
+  <!-- Add modal -->
   <div class="modal-backdrop" id="modal" hidden>
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-glow" aria-hidden="true"></div>
       <div class="modal-head">
-        <h2 id="modal-title">Add a new notice</h2>
+        <div>
+          <div class="eyebrow">CREATE NEW</div>
+          <h2 id="modal-title">Add a notice</h2>
+        </div>
         <button class="icon-btn" id="btn-close-modal" aria-label="Close">✕</button>
       </div>
       <form id="add-form">
         <label class="field">Title
-          <input name="title" required maxlength="120" placeholder="e.g. Midterm Exam Schedule">
+          <input name="title" required maxlength="120" placeholder="e.g. Annual Hackathon 2026">
         </label>
         <div class="field-row">
           <label class="field">Category
@@ -97,11 +105,11 @@
           </label>
         </div>
         <label class="field">Description
-          <textarea name="description" rows="3" placeholder="Optional details…"></textarea>
+          <textarea name="description" rows="3" placeholder="Add helpful details…"></textarea>
         </label>
         <div class="modal-actions">
           <button type="button" class="btn-ghost" id="btn-cancel">Cancel</button>
-          <button type="submit" class="btn-primary">Save notice</button>
+          <button type="submit" class="btn-primary">Publish notice <span>→</span></button>
         </div>
       </form>
     </div>
